@@ -1,0 +1,35 @@
+.sidebar-menu {
+  position: fixed;
+}
+
+.sidebar-menu__item {
+  font-size: 19px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-weight: 380;
+  padding: 10px;
+}
+
+.sidebar-menu__item:hover {
+  background: rgb(23, 23, 24);
+  color: #ffffffaf;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.sidebar-menu__item--active {
+  color: #f8f8f8;
+}
+
+.sidebar-menu__item-icon {
+  color: #cacaca;
+  height: 26px;
+  margin-right: 20px;
+}
+
+.sidebar-menu__item--active .sidebar-menu__item-icon {
+  filter: invert(67%) sepia(60%) saturate(4956%) hue-rotate(176deg) brightness(95%) contrast(99%);
+}
+
+
