@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA=Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="Slot Machine.css">	
+<title>Slot Machine</title>
+</head>
+
+<body>
+	<video autoplay muted loop id="casino">
+	<source src="hd0046 (1).mp4" type="video/mp4">
+	</video>
+
+			<div class="info">
+			<p>Coins: <span id="coins">20</span></p> 
+			<p>Bet: <input type="number" id="bet" min="1" max="10" value="1"></p>
+			<p id="result"></p>
+			</div>
+	<div class="container">
+		<div class="machine">	
+		<div id="slots">
+     <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+			</div>
+			<div>
+		<button onClick="spin()">START</button>
+	</div>
+	</div>
+		</div>
+	 
+<script>
+const numbers = ['1', '2', '3', '4', '5','6', '7', '8', '9', '0'];
+const winnings = {
+  '111': 20,
+  '420': 40,
+  '555': 60,
+  '777': 80,
+  '999': 100
+};
+
+
+const coinsElem = document.getElementById('coins');
+const betElem = document.getElementById('bet');
+const insertedCoinsElem = document.getElementById('inserted-coins');
+const slotsElem = document.getElementById('slots');
+const resultElem = document.getElementById('result');
+
+let coins = 20;
+
+function spin() {
+  const bet = parseInt(betElem.value);
+  if (coins < bet) {
+    resultElem.textContent = 'Not enough coins to make the bet';
+    return;
+  }
+
+  coins -= bet;
+  coinsElem.textContent = coins;
+
+  const numbers = [getRandomNumber(), getRandomNumber(), getRandomNumber()];
+
+  slotsElem.innerHTML = '';
+  numbers.forEach(number => {
+    const slotElem = document.createElement('div');
+    slotElem.classList.add('slot');
+    slotElem.textContent = number;
+    slotsElem.appendChild(slotElem);
+  });
+
+  const winningCombination = numbers.join('');
+  if (winningCombination in winnings) {
+    const winningsAmount = winnings[winningCombination] * bet;
+    coins += winningsAmount;
+    coinsElem.textContent = coins;
+    resultElem.textContent = `You won ${winningsAmount} coins with ${winningCombination}`;
+  } else {
+    resultElem.textContent = `No luck this time`;
+  }
+}
+
+function getRandomNumber() {
+  return numbers[Math.floor(Math.random() * numbers.length)];
+}
+	</script>
+</body>
+</html>

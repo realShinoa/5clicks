@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA=Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="calcu.css">
+<title>calcu</title>
+
+</head>
+<body>
+	<video autoplay muted loop id="space">
+	<source src="space effect.mp4" type="video/mp4">
+	</video>
+
+	<div class="container">
+		<div class="calculator">
+		<input type="text" placeholder="0" id="output">
+		<button onClick="Clear()">C</button>
+		<button onClick="del()">DEL</button>
+			<button onClick="display('%')">%</button>
+		<button onClick="display('/')">/</button>
+		<button onClick="display('7')">7</button>
+		<button onClick="display('8')">8</button>
+		<button onClick="display('9')">9</button>
+		<button onClick="display('*')">*</button>
+		<button onClick="display('4')">4</button>
+		<button onClick="display('5')">5</button>
+		<button onClick="display('6')">6</button>
+		<button onClick="display('-')">-</button>
+		<button onClick="display('1')">1</button>
+		<button onClick="display('2')">2</button>
+		<button onClick="display('3')">3</button>
+		<button onClick="display('+')">+</button>
+		<button onClick="display('.')">.</button>
+		<button onClick="display('0')">0</button>
+		<button onClick="Calculate()" class="equal">=</button>
+		</div>
+	</div>
+	<script>
+		let outputScreen = document.getElementById("output");
+		
+		function display(num){
+			outputScreen.value += num;
+		}
+		function Calculate(){
+			try {outputScreen.value = eval(outputScreen.value);
+			
+				}
+			catch(err){
+				aler("Cannot be computed")
+			}
+		}
+		function Clear(){
+			outputScreen.value = " ";
+		}
+		function del(){
+			outputScreen.value = outputScreen.value.slice(0,-1);
+		}
+	</script>
+</body>
+</html>

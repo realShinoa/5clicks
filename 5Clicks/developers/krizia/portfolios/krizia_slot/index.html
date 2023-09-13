@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fin-Act10-SlotMachine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+</head>
+<style>
+    body {
+    background-image: url('https://i.pinimg.com/736x/d0/e4/15/d0e4158f497ed3ccfa30c290da5dc6e5.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.slot-machine {
+    color: white; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+    font-size: 208px;
+   
+}
+.bet{
+justify-content: center;
+align-items: center;
+height: 80px;
+font-size: 20px;
+color: white; 
+}
+
+</style>
+<body>
+    <div class="slot-machine">
+        <span id="slot1">0</span>
+        <span id="slot2">0</span>
+        <span id="slot3">0</span>
+    </div>
+    <div class="bet">
+        <input type="number" id="bet" min="1" max="10">
+        <label for="bet">Bet: </label>
+        <button onclick="spin()">Spin</button>
+        <p>Coins: <span id="coins">20</span></p>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        
+        var slot1 = document.getElementById("slot1");
+        var slot2 = document.getElementById("slot2");
+        var slot3 = document.getElementById("slot3");
+        var betInput = document.getElementById("bet");
+        var coinsSpan = document.getElementById("coins");
+        var resultPara = document.getElementById("result");
+
+        var symbols = ["ñ", "ö", "*", "$", "7"]; 
+        var wins = {
+            "ñññ": 2,
+            "ööö": 5,
+            "***": 15,
+            "$$$": 20,
+            "777": 100
+        };
+
+        var coins = 20;
+        var bet = 1;
+
+        function spin() {
+    bet = parseInt(betInput.value); 
+    if (isNaN(bet) || bet <= 0) {
+        resultPara.textContent = "Invalid bet amount!";
+        return;
+    }
+    if (coins < bet) {
+        resultPara.textContent = "Not enough coins to bet!";
+        return;
+    }
+
+    coins -= bet;
+    coinsSpan.textContent = coins;
+            var interval1 = setInterval(function() {
+                slot1.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 100); 
+
+            var interval2 = setInterval(function() {
+                slot2.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 100); 
+
+            var interval3 = setInterval(function() {
+                slot3.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+            }, 100); 
+
+            setTimeout(function() {
+                clearInterval(interval1);
+                clearInterval(interval2);
+                clearInterval(interval3);
+
+                var result = checkWin();
+                if (result) {
+                    var multiplier = wins[result];
+                    var winAmount = bet * multiplier;
+                    coins += winAmount;
+                    coinsSpan.textContent = coins;
+                    resultPara.textContent = "You won x" + winAmount + " coins!";
+                } else {
+                    resultPara.textContent = "Try again!";
+                }
+            }, 3000); 
+        }
+
+        function checkWin() {
+            var symbolsString = slot1.textContent + slot2.textContent + slot3.textContent;
+            return wins.hasOwnProperty(symbolsString) ? symbolsString : null;
+        }
+      
+
+    </script>
+</body>
+</html>

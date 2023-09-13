@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Slot Machine Game</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>SLOT MACHINE TO ERP</h1>
+			<p>Pantaya: <span id="coins">20</span></p>
+			<p>Sige taya: <input type="number" id="bet" min="1" max="10" value="1"></p>
+			<button id="spin-button" onclick="spin()">PALAG</button>
+		</div>
+		<div class="slots">
+			<div class="slot" id="slot1"></div>
+			<div class="slot" id="slot2"></div>
+			<div class="slot" id="slot3"></div>
+		</div>
+        <div class="image">
+            <img id="result-image" style="display: none;">
+        </div>
+		<div class="footer">
+			<p id="result"></p>
+            
+		</div>
+     
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>

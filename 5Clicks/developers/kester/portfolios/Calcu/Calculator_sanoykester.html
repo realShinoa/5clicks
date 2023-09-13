@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		body {
+			background-color: black;
+		}
+		#calculator {
+			background-color: #15202B;
+			border: 2px solid #5f2a2a;
+			border-radius: 12px;
+			box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+			width: 300px;
+			margin: 250px auto;
+			padding: 10px;
+			text-align: center;
+			color: white;
+			font-size: 24px;
+			line-height: 36px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+		}
+		#calculator button {
+			background-color: #333;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-size: 24px;
+			height: 50px;
+			margin: 5px;
+			width: 50px;
+			cursor: pointer;
+		}
+		#calculator button:hover {
+			background-color: #444;
+		}
+		#calculator button:active {
+			transform: translateY(2px);
+			box-shadow: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="calculator">
+		<div id="output"></div>
+		<button onclick="addToOutput('7')">7</button>
+		<button onclick="addToOutput('8')">8</button>
+		<button onclick="addToOutput('9')">9</button>
+		<button onclick="addToOutput('/')">÷</button>
+		<button onclick="addToOutput('4')">4</button>
+		<button onclick="addToOutput('5')">5</button>
+		<button onclick="addToOutput('6')">6</button>
+			<button onclick="addToOutput('*')">×</button>
+		<button onclick="addToOutput('1')">1</button>
+		<button onclick="addToOutput('2')">2</button>
+		<button onclick="addToOutput('3')">3</button>
+			<button onclick="addToOutput('-')">−</button>
+		<button onclick="addToOutput('0')">0</button>
+		<button onclick="addToOutput('.')">.</button>
+		<button onclick="clearOutput()">C</button>
+			<button onclick="addToOutput('+')">+</button>
+		<button onclick="calculate()">=</button>
+	</div>
+	<script>
+		let output = document.getElementById("output");
+		function addToOutput(char) {
+			output.innerText += char;
+		}
+		function clearOutput() {
+			output.innerText = "";
+		}
+		function calculate() {
+			try {
+				output.innerText = eval(output.innerText);
+			} catch (e) {
+				output.innerText = "Error";
+			}
+		}
+	</script>
+</body>
+</html>

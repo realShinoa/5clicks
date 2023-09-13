@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title> Slot Machine-Castillo</title>
+    <link rel="stylesheet" href="coin.css"> 
+	<style>
+		body {
+
+                  position: relative;
+			text-align: center;
+			font-family: serif;
+			font-size: 40px;
+                  height: 800px;
+			color: white;
+			background: url("bg.jpg");
+			background-size: cover;
+
+		}
+        
+        div {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+ 
+        h2 {
+			font-size: 70px;
+			text-align: center;
+			margin: 30px;
+			font-family:Battlestar ;
+			color: transparent;
+			animation: effect 2s linear infinite;
+        }
+ 
+        @keyframes effect {
+			0% {
+				background: linear-gradient(#ff01fa, #ffffff);
+				-webkit-background-clip: text;
+			}
+ 
+			100% {
+				background: linear-gradient(#0decff, #e8ff01);
+				-webkit-background-clip: text;
+			}
+		}
+
+input {
+ width: 300px;
+ height: 100px;
+ background-color: yellow;
+ font-size: 1em;
+ font-weight: bold;
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ border: 1px solid black;
+}
+
+	</style>
+</head>
+<body>
+
+<h2>Slot Machine</h2>    
+	<p>Coins: <span id="coins">20 </span> <img src="https://i.gifer.com/origin/8a/8ab711c13e53e452209ca06551d36b3c_w200.gif" width="50" height="50"></p>
+
+	<p style="font-size: 40px;">Bet: <input type="number" id="bet" style="width: 10%;height: 30px; min="1" max="10" value="1"> <button onclick="spin()" style="background-color: #B181D4;">Spin</button></p>
+	<p id="result"></p>
+	<div id="slots">
+		<span id="slot1"></span>
+		<span id="slot2"></span>
+		<span id="slot3"></span>
+	</div>
+	<script>
+		var coins = 20;
+		var bet = 1;
+		var slotIcons = ['😣', '😁','😴', '🤩','🙄'];
+		var winnings = {'😣😣😣': 2, '😁😁😁': 5, '😴😴😴': 10, '🤩🤩🤩': 20, '🙄🙄🙄': 50};
+
+		function spin() {
+			// update bet and coins
+			bet = parseInt(document.getElementById('bet').value);
+			if (bet > coins) {
+				alert('You don\'t have enough coins to make that bet!');
+				return;
+			}
+			coins -= bet;
+
+			document.getElementById('coins').textContent = coins;
+
+			// spin slots
+			var slot1 = Math.floor(Math.random() * slotIcons.length);
+			var slot2 = Math.floor(Math.random() * slotIcons.length);
+			var slot3 = Math.floor(Math.random() * slotIcons.length);
+			document.getElementById('slot1').textContent = slotIcons[slot1];
+			document.getElementById('slot2').textContent = slotIcons[slot2];
+			document.getElementById('slot3').textContent = slotIcons[slot3];
+
+			// check for winnings
+
+			var result = '';
+			if (slot1 === slot2 && slot2 === slot3) {
+  var winningIcon = slotIcons[slot1];
+  var winningsMultiplier = winnings[winningIcon.repeat(3)];
+  if (winningsMultiplier) {
+    var winningsAmount = bet * winningsMultiplier;
+    coins += winningsAmount;
+    result = 'You won ' + winningsAmount + ' coins!';
+    // c
+				}
+			} else if (slot1 === slot2 || slot2 === slot3 || slot1 === slot3) {
+				result = "You got a match!";
+			} else {
+				result = "Try again!";
+			}
+			document.getElementById("result").textContent = result;
+			document.getElementById("coins").textContent = coins;
+		}
+	</script>
+</body>
+</html>

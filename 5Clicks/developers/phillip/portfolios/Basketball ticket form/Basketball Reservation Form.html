@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Basketball Ticket Reservation Form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" />
+	<style>
+		body {
+			background-image: url("kobe.gif");
+			background-size: auto;
+			font-family: 'Bahnschrift SemiBold', 'Bahnschrift SemiBold Condensed', 'Bahnschrift SemiBold SemiConden', 'Bahnschrift SemiCondensed';
+			font-weight: bolder;
+		}
+		.card-header {
+			background-color:#5C0972;
+			color: #FFFFFF;
+		  font: "Bahnschrift SemiBold Condensed";
+			font-weight: bolder;
+		}
+		.card-body {
+			color: #5C0972;
+		  font: bold;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header text-center">
+				<h1 class="card-title mb-0">LAKERS TICKET RESERVATION</h1>
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+						<label for="name">NAME :</label>
+						<input type="text" class="form-control" id="name" placeholder="Enter your name">
+					</div>
+					<div class="form-group">
+						<label for="email">EMAIL :</label>
+						<input type="email" class="form-control" id="email" placeholder="Enter your email">
+					</div>
+					<div class="form-group">
+						<label for="name">ADDRESS:</label>
+						<input type="text" class="form-control" id="address" placeholder="Enter your address">
+					</div>
+					<div class="form-group">
+						<label for="name">PHONE NUMBER:</label>
+						<input type="text" class="form-control" id="phone number" placeholder="Enter your phone number">
+					</div>
+					<div class="form-group">
+						<label for="seat-level">SEAT LEVEL:</label>
+						<select class="form-control" id="seat-level">
+							<option value="balcony">$50 - Balcony</option>
+							<option value="lower">$200 - Lower</option>
+							<option value="floor">$500 - Floor</option>
+							<option value="courtside">$1000 - Courtside</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="num-tickets">NUMBER OF TICKETS:</label>
+						<input type="number" class="form-control" id="num-tickets" placeholder="Enter the number of tickets">
+					</div>
+					<center>
+					<button type="submit" class="btn btn-deep-purple" >SUBMIT</button>
+						</center>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+</body>
+</html>

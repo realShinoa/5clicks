@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+#space{
+	  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Bahnschrift SemiBold', 'Bahnschrift SemiBold Condensed', 'Bahnschrift SemiBold SemiConden', 'Bahnschrift SemiCondensed';
+
+	
+}
+.container{
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	justify-content: center;
+}
+.calculator{
+	background-color: #222C36;
+	padding: 15px;
+	border-radius: 30px;
+	display: grid;
+	grid-template-columns: repeat(4,65px);
+	box-shadow: -8px -8px 15px rgba(255,255,255,0.1),
+		  inset 5px 5px 15px rgba(0,0,0,0.2);
+}
+input{
+	grid-column: span 4;
+	height: 70px;
+	width: 260px;
+	background-color: #222C36;
+	box-shadow: inset -8px -8px 15px rgba(255,255,255,0.1),
+		 inset 5px 5px 15px rgba(0,0,0,0.2);
+	border: none;
+	border-radius: 30px;
+	color: #38c7bb;
+	font-size: 50px;
+	text-align: end;
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	padding: 20px;
+}
+button{
+	height: 48px;
+	width: 48px;
+	background-color: #222C36;
+	box-shadow: -8px -8px 10px rgba(255,255,255,0.1),
+		 5px 5px 8px rgba(0,0,0,0.2);
+	border: none;
+	border-radius: 25%;
+	margin: 8px;
+	font-size: 16px;
+	color: ghostwhite;
+}
+.equal{
+	width: 115px;
+	box-shadow: -8px -8px 10px rgba(255,255,255,0.1),
+		 5px 5px 8px rgba(0,0,0,0.2);
+}
